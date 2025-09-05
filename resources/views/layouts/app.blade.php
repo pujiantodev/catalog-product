@@ -43,5 +43,14 @@
         </div>
         @stack("scripts")
         <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+        @production
+            <script src="https://unpkg.com/lucide@latest"></script>
+        @else
+            <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+        @endproduction
+
+        <script>
+            lucide.createIcons();
+        </script>
     </body>
 </html>

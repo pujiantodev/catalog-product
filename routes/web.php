@@ -15,3 +15,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+
+// brand
+Route::prefix('/brands')->middleware(['auth'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\BrandController::class, 'index'])->name('brands.index');
+    Route::post('/', [\App\Http\Controllers\BrandController::class, 'store'])->name('brands.store');
+    Route::delete('/{id}', [\App\Http\Controllers\BrandController::class, 'destroy'])->name('brands.destroy');
+});

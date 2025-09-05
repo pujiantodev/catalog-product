@@ -28,6 +28,7 @@
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:ms-6 sm:flex sm:items-center">
+                <x-tonggle-theme />
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
