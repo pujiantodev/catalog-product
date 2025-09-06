@@ -7,21 +7,31 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">
+    <div
+        class="flex flex-col items-start justify-between space-y-4 p-2 md:flex-row md:space-x-2 md:p-0"
+    >
+        <div class="w-full md:w-1/4">
+            @include("layouts.navigation-setting-catalog")
+        </div>
+        <div class="w-full md:w-3/4">
             <x-card class="space-y-4">
-                {{-- filter dan tombol --}}
-                <section class="flex flex-col md:flex-row">
-                    <x-button
-                        x-data=""
-                        x-on:click.prevent="$dispatch('open-modal', 'add-brand')"
-                    >
-                        <i
-                            data-lucide="circle-plus"
-                            class="mr-2 h-4 w-auto"
-                        ></i>
-                        Tambah Brand
-                    </x-button>
+                <section class="flex flex-col space-y-4 md:space-y-2">
+                    <div class="w-full">
+                        <x-button
+                            x-data=""
+                            x-on:click.prevent="$dispatch('open-modal', 'add-brand')"
+                        >
+                            <i
+                                data-lucide="circle-plus"
+                                class="mr-2 h-4 w-auto"
+                            ></i>
+                            Tambah Brand
+                        </x-button>
+                    </div>
+                    <div class="w-full">
+                        {{-- filter dan tombol --}}
+                        @include("brand.partials.filter")
+                    </div>
                 </section>
                 {{-- data table --}}
                 @include("brand.partials.table")

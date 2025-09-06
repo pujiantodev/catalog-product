@@ -21,5 +21,6 @@ require __DIR__ . '/auth.php';
 Route::prefix('/brands')->middleware(['auth'])->group(function () {
     Route::get('/', [\App\Http\Controllers\BrandController::class, 'index'])->name('brands.index');
     Route::post('/', [\App\Http\Controllers\BrandController::class, 'store'])->name('brands.store');
+    Route::patch('/{id}', [\App\Http\Controllers\BrandController::class, 'update'])->name('brands.update');
     Route::delete('/{id}', [\App\Http\Controllers\BrandController::class, 'destroy'])->name('brands.destroy');
 });

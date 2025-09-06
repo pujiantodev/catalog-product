@@ -70,7 +70,7 @@
 
         <!-- Modal Content -->
         <div
-            class="{{ $maxWidthClass }} relative z-[110] mx-2 w-full overflow-hidden rounded-lg bg-white shadow-xl md:mx-auto dark:bg-gray-800"
+            class="{{ $maxWidthClass }} relative z-[110] mx-2 w-full overflow-hidden rounded-lg bg-white shadow-xl md:mx-auto dark:bg-gray-700"
             @click.stop
         >
             {{ $slot }}

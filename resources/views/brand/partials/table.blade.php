@@ -1,5 +1,8 @@
-<section>
-    <div class="relative overflow-x-auto">
+<section
+    x-data="{ brand: { id: null, name: '' } }"
+    @keydown.escape.window="showModal = false"
+>
+    <div class="relative overflow-x-scroll md:overflow-x-clip">
         <table
             class="w-full text-left text-sm text-gray-500 rtl:text-right dark:text-gray-400"
         >
@@ -54,12 +57,20 @@
                                         <a
                                             href="#"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            @click.prevent="$dispatch('open-modal', { name: 'edit-brand', data: { id: {{ $item->id }}, name: '{{ addslashes($item->name) }}' } })"
                                         >
                                             Edit
                                         </a>
                                     </li>
                                     <li>
-                                        <form
+                                        <a
+                                            href="#"
+                                            class="block px-4 py-2 hover:bg-red-100 dark:hover:bg-red-600 dark:hover:text-white"
+                                            @click.prevent="$dispatch('open-modal', { name: 'delete-brand', data: { id: {{ $item->id }}, name: '{{ addslashes($item->name) }}' } })"
+                                        >
+                                            Hapus
+                                        </a>
+                                        {{-- <form
                                             action="{{ route("brands.destroy", $item->id) }}"
                                             method="post"
                                         >
@@ -73,7 +84,7 @@
                                             >
                                                 Hapus
                                             </a>
-                                        </form>
+                                        </form> --}}
                                     </li>
                                 </ul>
                             </div>
@@ -88,4 +99,6 @@
     <div class="mt-6">
         {{ $brands->links() }}
     </div>
+    @include("brand.partials.modal-edit")
+    @include("brand.partials.modal-delete")
 </section>
