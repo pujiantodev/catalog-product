@@ -34,8 +34,7 @@ class BrandController extends Controller
         ]);
         $name = $request->name;
         $newbrand = Brand::create([
-            'name' => $name,
-            'slug' => Str::slug($name) . '-' . random_int(1, 9999)
+            'name' => $name
         ]);
         return to_route('brands.index')->with('status', "Berhasil menambahkan brand baru: {$newbrand->name}");
     }
@@ -51,8 +50,7 @@ class BrandController extends Controller
         $name = $request->name;
         $brand = Brand::findOrFail($id);
         $brand->update([
-            'name' => $name,
-            'slug' => Str::slug($name) . '-' . random_int(1, 9999)
+            'name' => $name
         ]);
         return to_route('brands.index')->with('status', "Berhasil mengubah brand: {$brand->name}");
     }

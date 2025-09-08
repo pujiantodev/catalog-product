@@ -31,3 +31,10 @@ Route::prefix('/categories')->middleware(['auth'])->group(function () {
     Route::patch('/{id}', [\App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/{id}', [\App\Http\Controllers\CategoryController::class, 'destroy'])->name('categories.destroy');
 });
+
+// products
+Route::prefix('/products')->middleware(['auth'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+    Route::post('/', [\App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+    Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+});
