@@ -34,7 +34,6 @@ class CategoryController extends Controller
         $name = $request->name;
         $newCategory = Category::create([
             'name' => $name,
-            'slug' => Str::slug($name) . '-' . random_int(1, 9999)
         ]);
         return to_route('categories.index')->with('status', "Berhasil menambahkan kategori baru: {$newCategory->name}");
     }
@@ -50,8 +49,7 @@ class CategoryController extends Controller
         $name = $request->name;
         $category = Category::findOrFail($id);
         $category->update([
-            'name' => $name,
-            'slug' => Str::slug($name) . '-' . random_int(1, 9999)
+            'name' => $name
         ]);
         return to_route('categories.index')->with('status', "Berhasil mengubah kategori: {$category->name}");
     }

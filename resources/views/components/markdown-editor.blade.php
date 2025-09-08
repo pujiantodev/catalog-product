@@ -23,7 +23,7 @@
         placeholder="{{ $placeholder }}"
         @readonly($readonly)
         @disabled($disabled)
-        class="w-full"
+        class="w-full dark:bg-gray-700"
     >
 {{ $value }}</textarea
     >
@@ -31,7 +31,7 @@
     {{-- Preview mandiri pakai Tailwind Typography --}}
     <div
         id="{{ $previewId }}"
-        class="prose max-w-none overflow-auto rounded-md border p-4"
+        class="prose max-w-none overflow-auto rounded-md border p-4 dark:text-gray-300 dark:prose-invert"
         style="min-height: {{ $minHeight }}"
     >
         {{-- isi preview akan dirender via JS --}}
