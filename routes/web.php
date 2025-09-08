@@ -24,3 +24,10 @@ Route::prefix('/brands')->middleware(['auth'])->group(function () {
     Route::patch('/{id}', [\App\Http\Controllers\BrandController::class, 'update'])->name('brands.update');
     Route::delete('/{id}', [\App\Http\Controllers\BrandController::class, 'destroy'])->name('brands.destroy');
 });
+// brand
+Route::prefix('/categories')->middleware(['auth'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/', [\App\Http\Controllers\CategoryController::class, 'store'])->name('categories.store');
+    Route::patch('/{id}', [\App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/{id}', [\App\Http\Controllers\CategoryController::class, 'destroy'])->name('categories.destroy');
+});

@@ -9,7 +9,12 @@
             </x-nav-link2>
         </li>
         <li>
-            <x-nav-link2 href="#">Kategori</x-nav-link2>
+            <x-nav-link2
+                href="{{ route('categories.index') }}"
+                :active="request()->routeIs('categories.*')"
+            >
+                Kategori
+            </x-nav-link2>
         </li>
     </ul>
 </x-card>

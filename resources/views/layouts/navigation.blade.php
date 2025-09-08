@@ -25,7 +25,7 @@
                     </x-nav-link>
                     <x-nav-link
                         :href="route('brands.index')"
-                        :active="request()->routeIs('brands.*')"
+                        :active="request()->routeIs(['brands.*','categories.*'])"
                     >
                         {{ __("Pengaturan Katalog") }}
                     </x-nav-link>
@@ -121,6 +121,12 @@
                 :active="request()->routeIs('dashboard')"
             >
                 {{ __("Dashboard") }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link
+                :href="route('brands.index')"
+                :active="request()->routeIs(['brands.*','categories.*'])"
+            >
+                {{ __("Pengaturan Katalog") }}
             </x-responsive-nav-link>
         </div>
 
