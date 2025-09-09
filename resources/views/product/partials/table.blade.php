@@ -11,7 +11,7 @@
             >
                 <tr>
                     <th scope="col" class="px-6 py-3">Nama Barang</th>
-                    <th scope="col" class="px-6 py-3">Brand</th>
+                    <th scope="col" class="px-6 py-3">Kategori</th>
                     <th scope="col" class="px-6 py-3">Stok</th>
                     <th scope="col" class="px-6 py-3">Aksi</th>
                 </tr>
@@ -28,13 +28,13 @@
                             <div class="font-medium">{{ $item->name }}</div>
                             <div class="text-gray-500">
                                 <x-badge
-                                    :label="$item->brand->name"
+                                    :label="$item->brand?->name"
                                     variant="green"
                                 />
                             </div>
                         </th>
                         <td class="px-6 py-4">
-                            {{ $item->category->name }}
+                            {{ $item->category?->name }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $item->defaultVariant?->stock }}
@@ -61,9 +61,16 @@
                                 >
                                     <li>
                                         <a
-                                            href="#"
+                                            href="{{ route("products.show", $item->id) }}"
                                             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                            @click.prevent="$dispatch('open-modal', { name: 'edit-category', data: { id: {{ $item->id }}, name: '{{ addslashes($item->name) }}' } })"
+                                        >
+                                            Lihat
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a
+                                            href="{{ route("products.edit", $item->id) }}"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >
                                             Edit
                                         </a>

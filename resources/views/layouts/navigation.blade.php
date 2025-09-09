@@ -29,6 +29,12 @@
                     >
                         {{ __("Pengaturan Katalog") }}
                     </x-nav-link>
+                    <x-nav-link
+                        :href="route('products.index')"
+                        :active="request()->routeIs('products.*')"
+                    >
+                        Produk / Barang
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -127,6 +133,12 @@
                 :active="request()->routeIs(['brands.*','categories.*'])"
             >
                 {{ __("Pengaturan Katalog") }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link
+                :href="route('products.index')"
+                :active="request()->routeIs('products.*')"
+            >
+                Product / Barang
             </x-responsive-nav-link>
         </div>
 
