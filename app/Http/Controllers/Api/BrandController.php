@@ -13,7 +13,7 @@ class BrandController extends Controller
         $search = $request->query('q');
         $categories = Brand::query()
             ->when(filled($search), fn($query) => $query->where('name', 'ILIKE', "%{$search}%"))
-            ->limit(5)
+            ->limit(10)
             ->get(['id', 'name']);
         return $categories;
     }

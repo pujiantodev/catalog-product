@@ -23,7 +23,7 @@
     <div
         x-show="open"
         @click.outside="open = false"
-        class="absolute z-10 mt-2 w-full rounded-lg border bg-white p-4 dark:border-gray-500 dark:bg-gray-700"
+        class="fixed z-10 mt-2 w-auto max-w-screen rounded-lg border bg-gray-50 p-4 md:w-[300px] dark:border-gray-500 dark:bg-gray-700"
     >
         <x-text-input
             type="search"

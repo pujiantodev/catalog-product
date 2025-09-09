@@ -3,12 +3,13 @@
         <h2
             class="text-xl leading-tight font-semibold text-gray-800 dark:text-gray-200"
         >
-            Buat Barang Baru
+            {{ $product->name }}
         </h2>
     </x-slot>
 
-    <form action="{{ route("products.store") }}" method="post">
+    <form action="{{ route("products.update", $product->id) }}" method="post">
         @csrf
+        @method("PUT")
         <x-card class="space-y-8 overflow-auto p-6">
             <section class="space-y-4">
                 <div class="space-y-2">
@@ -17,7 +18,11 @@
                         value="Nama Barang"
                         class="required"
                     />
-                    <x-text-input id="name" name="name" :value="old('name')" />
+                    <x-text-input
+                        id="name"
+                        name="name"
+                        :value="old('name') ?? $product->name"
+                    />
                     <x-input-error
                         class="mt-2"
                         :messages="$errors->get('name')"
@@ -32,7 +37,7 @@
                             id="brand"
                             name="brand"
                             :endpoint="route('api.public.brands.list')"
-                            :placeholder="'Pilih Brand...'"
+                            :placeholder="$product->brand?->name ?? 'Pilih Brand...'"
                         />
                     </div>
                     <div class="w-full space-y-2">
@@ -41,7 +46,7 @@
                             id="category"
                             name="category"
                             :endpoint="route('api.public.categories.list')"
-                            :placeholder="'Pilih Kategori...'"
+                            :placeholder="$product->category?->name ??'Pilih Kategori...'"
                         />
                     </div>
                 </div>
@@ -56,7 +61,7 @@
                             type="text"
                             id="sku"
                             name="sku"
-                            :value="old('sku')"
+                            :value="old('sku') ?? $product->defaultVariant?->sku"
                         />
                         <x-input-error
                             class="mt-2"
@@ -73,7 +78,7 @@
                             type="number"
                             id="stock"
                             name="stock"
-                            :value="old('stock')"
+                            :value="old('stock') ?? $product->defaultVariant?->stock"
                         />
                         <x-input-error
                             class="mt-2"
@@ -89,7 +94,7 @@
                         <x-text-input
                             id="price"
                             name="price"
-                            :value="old('price')"
+                            :value="old('price') ?? $product->defaultVariant?->price"
                         />
                         <x-input-error
                             class="mt-2"
@@ -108,7 +113,7 @@
                             type="number"
                             id="weight"
                             name="weight"
-                            :value="old('weight')"
+                            :value="old('weight')  ?? $product->defaultVariant?->weight"
                         />
                         <x-input-error
                             class="mt-2"
@@ -117,26 +122,45 @@
                     </div>
                     <div class="space-y-2">
                         <x-input-label for="length" value="Panjang (m)" />
-                        <x-text-input type="number" id="length" name="length" />
+                        <x-text-input
+                            type="number"
+                            id="length"
+                            name="length"
+                            :value="old('length')  ?? $product->defaultVariant?->length"
+                        />
                     </div>
                     <div class="space-y-2">
                         <x-input-label for="width" value="Lebar (m)" />
-                        <x-text-input type="number" id="width" name="width" />
+                        <x-text-input
+                            type="number"
+                            id="width"
+                            name="width"
+                            :value="old('width')  ?? $product->defaultVariant?->width"
+                        />
                     </div>
                     <div class="space-y-2">
                         <x-input-label for="height" value="Tinggi (m)" />
-                        <x-text-input type="number" id="height" name="height" />
+                        <x-text-input
+                            type="number"
+                            id="height"
+                            name="height"
+                            :value="old('height')  ?? $product->defaultVariant?->height"
+                        />
                     </div>
                 </div>
                 <div class="space-y-2">
-                    <x-primary-button>Simpan</x-primary-button>
+                    <x-primary-button>Udate</x-primary-button>
                 </div>
             </section>
         </x-card>
         <x-card class="mt-6">
             <div class="space-y-2">
                 <x-input-label for="description" value="Deskripsi" />
-                <x-markdown-editor id="description" name="description" />
+                <x-markdown-editor
+                    id="description"
+                    name="description"
+                    :value="old('description')  ?? $product->description"
+                />
             </div>
         </x-card>
     </form>
