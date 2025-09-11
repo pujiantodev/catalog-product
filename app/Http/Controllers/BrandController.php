@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -11,6 +12,7 @@ use Illuminate\Support\Str;
 
 class BrandController extends Controller
 {
+    use HasUlids;
     public function index(Request $request): View
     {
 

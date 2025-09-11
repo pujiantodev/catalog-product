@@ -11,3 +11,13 @@ if (! function_exists('render_markdown')) {
         return Str::markdown($input);
     }
 }
+
+if (! function_exists('new_ulid')) {
+    /**
+     * custom function for generate ulid from any where
+     */
+    function new_ulid(): string
+    {
+        return strtolower((string) Str::ulid());
+    }
+}

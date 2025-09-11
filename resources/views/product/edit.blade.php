@@ -159,6 +159,7 @@
                 <x-markdown-editor
                     id="description"
                     name="description"
+                    :preview="false"
                     :value="old('description')  ?? $product->description"
                 />
             </div>

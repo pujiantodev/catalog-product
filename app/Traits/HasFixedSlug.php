@@ -10,11 +10,10 @@ trait HasFixedSlug
     {
         static::creating(function ($model) {
             if (empty($model->slug) && !empty($model->slugSource())) {
-                $model->slug = Str::slug($model->slugSource()) . '-' . Str::ulid();
+                $model->slug = Str::slug($model->slugSource()) . '-' . new_ulid();
             }
         });
     }
-
     // field / column resource for slug, like name, title
     public function slugSource(): ?string
     {
